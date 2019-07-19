@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit"
+	xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+
+	<munit:config name="HelloWorldTest.xml" />
+
+	<munit:test name="HelloWorldTest-flowHelloWorldTest"
+		description="Test" doc:id="HelloWorldTest-flowHelloWorldTest">
+		<munit:execution>
+			<flow-ref doc:name="Flow-ref to flowHelloWorld" doc:id="4b16711d-afaa-4c01-ba11-b31213af6481"
+				name="flowHelloWorld" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="1b7e4430-f5e0-47bd-87de-37b8498d8716" expression="#[payload]" is="#[MunitTools::equalTo('Hello World! What a beautiful day it is ;)')]" message="The payload must contain 'Hello World! What a beautiful day it is ;)'"/>
+		</munit:validation>
+	</munit:test>
+
+</mule>
